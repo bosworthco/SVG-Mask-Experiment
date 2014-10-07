@@ -17,8 +17,8 @@ var updateViewport = function() {
 	var staticSVG = $(".js-svg-static");
 
 	parallaxSVG.css({
-		width: vpWidth * 1.3,
-		height: vpHeight * 1.1
+		width: vpWidth * 1.025,
+		height: vpHeight * 1.05
 	});
 
 	staticSVG.css({
@@ -62,7 +62,7 @@ $(document).ready(function() {
 				left: myX,
 				top: myY
 			},{
-				duration: 1000,
+				duration: 'slow',
 				queue: false,
 				easing: 'easeOutQuad'
 			});
