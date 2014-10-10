@@ -6,42 +6,45 @@
 **	initialise.js
 */
 
-
+detectFeatures();
 
 $(document).ready(function() {
 
-   		initParallax();
-		initGradient();
-		updateViewport();
+	initParallax();
+	initGradient();
+	updateViewport();
 
+	$(parallaxEl).on("click touchend", function() {
 
-		$(parallaxEl).on("click touchend", function() {
-			$(".svg_elem").toggleClass("zoom");
+		$(".svg_elem").toggleClass("zoom");
 
-			if($(".svg_elem").hasClass("zoom")) {
-				$(parallaxEl).animate({
-					"-webkit-mask-size": 100+"px"
-				}, 'slow', 'easeOutExpo');
-				$(staticEl).animate({
-					"-webkit-mask-size": 99+"px"
-				}, 'slow', 'easeOutExpo');
-			} else {
-				$(parallaxEl).animate({
-					"-webkit-mask-size": 50+"px"
-				}, 'slow', 'easeOutExpo');
-				$(staticEl).animate({
-					"-webkit-mask-size": 49+"px"
-				}, 'slow', 'easeOutExpo');
-			};
-		});
+		if($(".svg_elem").hasClass("zoom")) {
+			$(parallaxEl).animate(
+				{ "-webkit-mask-size": 100+"px" },
+				{ duration: 600, queue: false, easing: 'easeOutExpo' }
+			);
+			$(staticEl).animate(
+				{ "-webkit-mask-size": 99+"px" },
+				{ duration: 600, queue: false, easing: 'easeOutExpo' }
+			);
+		} else {
+			$(parallaxEl).animate(
+				{ "-webkit-mask-size": 50+"px" },
+				{ duration: 600, queue: false, easing: 'easeOutExpo' }
+			);
+			$(staticEl).animate(
+				{ "-webkit-mask-size": 49+"px" },
+				{ duration: 600, queue: false, easing: 'easeOutExpo' }
+			);
+		};
+	});
 
-		
-	
 });
+
 
 $(window).on("resize orientationchange", function() {
 	setTimeout(function() {
 		updateViewport();
-		console.log("Viewport Changed");
+		//console.log("Viewport Changed");
 	}, 1000);
 });
